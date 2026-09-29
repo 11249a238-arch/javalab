@@ -1,0 +1,10 @@
+Enter number of students: 3
+Enter student name: Aravind
+Enter bill: 4500
+Enter student name: Divya
+Enter bill: 6200
+Enter student name: Rahul
+Enter bill: 5100
+
+Student with highest bill: Divya
+Highest bill: 6200.0
