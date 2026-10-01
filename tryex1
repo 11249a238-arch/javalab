@@ -1,37 +1,55 @@
-import java.util.Scanner;
-
-class Student {
+class Boarder {
     String name;
-    double bill;
+    int days;
 
-    Student(String name, double bill) {
+    // Constructor
+    Boarder(String name, int days) {
         this.name = name;
-        this.bill = bill;
+        this.days = days;
+    }
+
+    // Method to calculate bill
+    double bill() {
+        return days * 85.0;
+    }
+
+    // Method to display details
+    void display() {
+        System.out.printf("%-10s %4d %8.2f%n",
+                name, days, bill());
     }
 }
 
-public class tryex1 {
+public class MessBill {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter number of students: ");
-        int n = sc.nextInt();
+        // Creating objects
+        Boarder b1 = new Boarder("Aravind", 28);
+        Boarder b2 = new Boarder("Divya", 30);
+        Boarder b3 = new Boarder("Karthik", 25);
 
-        Student highest = null;
+        // Display all students
+        System.out.println("NAME       DAYS     BILL");
 
-        for (int i = 0; i < n; i++) {
-            System.out.print("Enter student name: ");
-            String name = sc.next();
+        b1.display();
+        b2.display();
+        b3.display();
 
-            System.out.print("Enter bill: ");
-            double bill = sc.nextDouble();
+        // Finding highest bill
+        Boarder highest = b1;
 
-            if (highest == null || bill > highest.bill) {
-                highest = new Student(name, bill);
-            }
+        if (b2.bill() > highest.bill()) {
+            highest = b2;
         }
 
-        System.out.println("Student with highest bill: " + highest.name);
-        System.out.println("Highest bill: " + highest.bill);
+        if (b3.bill() > highest.bill()) {
+            highest = b3;
+        }
+
+        // Print highest bill student
+        System.out.println("\nStudent with highest bill:");
+        System.out.println("Name: " + highest.name);
+        System.out.println("Days: " + highest.days);
+        System.out.printf("Bill: Rs. %.2f%n", highest.bill());
     }
 }
