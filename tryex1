@@ -2,40 +2,46 @@ class Boarder {
     String name;
     int days;
 
-    // Constructor
+   
     Boarder(String name, int days) {
         this.name = name;
         this.days = days;
     }
 
-    // Method to calculate bill
+   
     double bill() {
-        return days * 85.0;
+        double amount = days * 85.0;
+
+        if (days < 26) {
+            amount = amount * 0.90;   
+        }
+
+        return amount;
     }
 
-    // Method to display details
+    
     void display() {
         System.out.printf("%-10s %4d %8.2f%n",
                 name, days, bill());
     }
 }
 
-public class MessBill {
+public class tryex1 {
     public static void main(String[] args) {
 
-        // Creating objects
+        
         Boarder b1 = new Boarder("Aravind", 28);
         Boarder b2 = new Boarder("Divya", 30);
         Boarder b3 = new Boarder("Karthik", 25);
 
-        // Display all students
+        
         System.out.println("NAME       DAYS     BILL");
 
         b1.display();
         b2.display();
         b3.display();
 
-        // Finding highest bill
+       
         Boarder highest = b1;
 
         if (b2.bill() > highest.bill()) {
@@ -46,7 +52,7 @@ public class MessBill {
             highest = b3;
         }
 
-        // Print highest bill student
+        
         System.out.println("\nStudent with highest bill:");
         System.out.println("Name: " + highest.name);
         System.out.println("Days: " + highest.days);
